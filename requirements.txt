@@ -5,8 +5,11 @@
 # ─────────────────────────────────────────────────────────────────
 
 # Web Framework
-flask==3.0.3
 werkzeug==3.0.4
+Flask>=3.0
+ibm-watsonx-ai
+urllib3<2.2
+requests<2.32.0
 
 # Environment Variables
 python-dotenv==1.0.1
