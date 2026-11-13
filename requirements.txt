@@ -1,6 +1,7 @@
 # ─────────────────────────────────────────────────────────────────
 #  AI Health Symptom Checker — Python Dependencies
-#  Pinned for Vercel Python Runtime (Python 3.12)
+#  Uses direct IBM watsonx.ai REST API (no ibm-cos-sdk dependency)
+#  Compatible with Vercel Python Runtime (Python 3.12)
 # ─────────────────────────────────────────────────────────────────
 
 # Web Framework
@@ -10,10 +11,7 @@ werkzeug==3.0.4
 # Environment Variables
 python-dotenv==1.0.1
 
-# IBM watsonx.ai SDK
-ibm-watsonx-ai==1.1.2
-
-# HTTP
+# HTTP client — direct IBM watsonx.ai REST calls + IAM token exchange
 requests==2.32.3
 urllib3==2.2.3
 certifi==2024.8.30
