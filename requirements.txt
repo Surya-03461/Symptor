@@ -1,0 +1,21 @@
+# ─────────────────────────────────────────────────────────────────
+#  AI Health Symptom Checker — Python Dependencies
+#  IBM Granite · IBM Cloud · Flask
+# ─────────────────────────────────────────────────────────────────
+
+# Web Framework
+Flask==3.0.3
+Werkzeug==3.0.4
+
+# Environment Variables
+python-dotenv==1.0.1
+
+# IBM watsonx.ai SDK (IBM Cloud Lite compatible)
+ibm-watsonx-ai==1.1.2
+
+# HTTP Client (used internally by IBM SDK)
+requests==2.32.3
+urllib3==2.2.3
+
+# Additional utilities
+certifi==2024.8.30

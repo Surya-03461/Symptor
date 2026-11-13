@@ -1,0 +1,631 @@
+/* ─────────────────────────────────────────
+   AI Health Symptom Checker — Stylesheet
+   IBM Granite · IBM Cloud
+───────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --ibm-blue: #0f62fe;
+  --ibm-blue-dark: #0043ce;
+  --ibm-teal: #009d9a;
+  --ibm-green: #24a148;
+  --ibm-yellow: #f1c21b;
+  --ibm-orange: #ff832b;
+  --ibm-red: #da1e28;
+  --ibm-purple: #8a3ffc;
+
+  --bg: #f4f4f4;
+  --surface: #ffffff;
+  --surface-2: #f8f9fa;
+  --border: #e0e0e0;
+  --text: #161616;
+  --text-muted: #525252;
+  --text-light: #8d8d8d;
+
+  --radius: 8px;
+  --radius-lg: 14px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+  --font: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ─── Header ───────────────────────────── */
+.app-header {
+  background: linear-gradient(135deg, #0f62fe 0%, #0043ce 60%, #001d6c 100%);
+  color: white;
+  padding: 0 24px;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header-icon {
+  font-size: 2.2rem;
+}
+
+.header-brand h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.header-sub {
+  font-size: 0.78rem;
+  opacity: 0.75;
+  margin-top: 1px;
+}
+
+.header-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.badge-ibm {
+  background: rgba(255,255,255,0.18);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+.badge-who {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ─── Disclaimer Banner ─────────────────── */
+.disclaimer-banner {
+  background: #fff8e1;
+  border-bottom: 2px solid var(--ibm-yellow);
+  padding: 10px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: #3d3000;
+  line-height: 1.5;
+}
+
+.disclaimer-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ─── Main Layout ───────────────────────── */
+.main-layout {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px 40px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+/* ─── Sidebar ───────────────────────────── */
+.sidebar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 80px;
+}
+
+.sidebar-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.sidebar-section {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.sidebar-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Quick symptom buttons */
+.quick-symptom-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.quick-symptom-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 0.83rem;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quick-symptom-btn:hover {
+  background: #e8f1ff;
+  border-color: var(--ibm-blue);
+  color: var(--ibm-blue);
+}
+
+/* Language tags */
+.lang-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.lang-tag {
+  background: #e8f1ff;
+  color: var(--ibm-blue);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid #c0d8ff;
+}
+
+/* Urgency guide */
+.urgency-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.urgency-item {
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.urgency-low { background: #defbe6; color: #0e6027; }
+.urgency-moderate { background: #fef3c7; color: #92400e; }
+.urgency-high { background: #ffe4e6; color: #9b1c1c; }
+.urgency-emergency { background: #fce7e9; color: #da1e28; border: 1px solid #da1e28; }
+
+/* Clear button */
+.btn-clear {
+  width: 100%;
+  padding: 9px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  transition: all 0.15s;
+}
+
+.btn-clear:hover {
+  background: #fff1f2;
+  border-color: var(--ibm-red);
+  color: var(--ibm-red);
+}
+
+/* ─── Chat Section ──────────────────────── */
+.chat-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-window {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  min-height: 420px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow);
+  scroll-behavior: smooth;
+}
+
+.chat-window::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-window::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* ─── Chat Messages ─────────────────────── */
+.message {
+  display: flex;
+  gap: 12px;
+  animation: fadeSlideIn 0.25s ease;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.message.user { justify-content: flex-end; }
+.message.assistant { justify-content: flex-start; }
+
+.msg-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.message.user .msg-avatar {
+  background: var(--ibm-blue);
+  color: white;
+  order: 2;
+}
+
+.message.assistant .msg-avatar {
+  background: linear-gradient(135deg, #009d9a, #0043ce);
+  color: white;
+}
+
+.msg-bubble {
+  max-width: 75%;
+  padding: 14px 16px;
+  border-radius: var(--radius-lg);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message.user .msg-bubble {
+  background: var(--ibm-blue);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.message.assistant .msg-bubble {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-bottom-left-radius: 4px;
+}
+
+.message.assistant .msg-bubble strong {
+  color: var(--ibm-blue-dark);
+}
+
+.message.emergency .msg-bubble {
+  background: #fff5f5;
+  border: 2px solid var(--ibm-red);
+}
+
+.msg-meta {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.source-badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.source-granite { background: #e8f1ff; color: var(--ibm-blue); }
+.source-db { background: #defbe6; color: #0e6027; }
+
+/* Welcome message */
+.welcome-card {
+  background: linear-gradient(135deg, #e8f1ff 0%, #f0f9ff 100%);
+  border: 1px solid #c0d8ff;
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+}
+
+.welcome-card h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ibm-blue-dark);
+  margin-bottom: 8px;
+}
+
+.welcome-card p {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.welcome-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.example-chip {
+  background: white;
+  border: 1px solid #c0d8ff;
+  color: var(--ibm-blue);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.example-chip:hover {
+  background: var(--ibm-blue);
+  color: white;
+  border-color: var(--ibm-blue);
+}
+
+/* ─── Urgency Alert Bar ─────────────────── */
+.urgency-alert {
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeSlideIn 0.2s ease;
+}
+
+.urgency-alert.level-low { background: #defbe6; color: #0e6027; border-left: 4px solid var(--ibm-green); }
+.urgency-alert.level-moderate { background: #fef3c7; color: #92400e; border-left: 4px solid var(--ibm-yellow); }
+.urgency-alert.level-high { background: #ffe4e6; color: #9b1c1c; border-left: 4px solid var(--ibm-red); }
+.urgency-alert.level-emergency { background: #fce7e9; color: #da1e28; border-left: 4px solid #da1e28; border: 2px solid #da1e28; animation: pulse 1s ease infinite; }
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(218,30,40,0.3); }
+  50% { box-shadow: 0 0 0 6px rgba(218,30,40,0); }
+}
+
+/* ─── Input Area ────────────────────────── */
+.chat-input-area {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-family: var(--font);
+  font-size: 0.92rem;
+  color: var(--text);
+  resize: none;
+  transition: border-color 0.2s;
+  background: var(--surface-2);
+  line-height: 1.5;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: var(--ibm-blue);
+  background: white;
+  box-shadow: 0 0 0 2px rgba(15,98,254,0.15);
+}
+
+.input-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.char-count {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.btn-send {
+  background: var(--ibm-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 22px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-send:hover {
+  background: var(--ibm-blue-dark);
+}
+
+.btn-send:active {
+  transform: scale(0.97);
+}
+
+.btn-send:disabled {
+  background: #a8c4ff;
+  cursor: not-allowed;
+}
+
+.send-icon {
+  font-size: 1rem;
+}
+
+/* ─── Loading Overlay ───────────────────── */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 22, 22, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(3px);
+}
+
+.spinner-box {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 32px 40px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.spinner-box p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e0e0e0;
+  border-top-color: var(--ibm-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.hidden { display: none !important; }
+
+/* ─── Responsive ────────────────────────── */
+@media (max-width: 768px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+    padding: 0 12px 40px;
+  }
+
+  .sidebar {
+    position: static;
+    order: 2;
+  }
+
+  .chat-section {
+    order: 1;
+  }
+
+  .header-badges {
+    display: none;
+  }
+
+  .msg-bubble {
+    max-width: 90%;
+  }
+}
+
+/* ─── Guardrail UI ──────────────────────── */
+.msg-bubble.guardrail-block {
+  background: #fff1f2;
+  border: 1px solid #fca5a5;
+  color: #7f1d1d;
+}
+
+.guardrail-warnings {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 4px solid var(--ibm-yellow);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: #78350f;
+  margin-left: 48px;
+  animation: fadeSlideIn 0.2s ease;
+}
+
+.guardrail-warn-icon {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.guardrail-warnings ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.guardrail-warnings li {
+  margin-bottom: 4px;
+  line-height: 1.5;
+}

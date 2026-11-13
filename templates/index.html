@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Symptor|AI Health Symptom Checker | Powered by IBM Granite</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="header-icon">🏥</span>
+        <div>
+          <h1>AI Health Symptom Checker</h1>
+          <p class="header-sub">Powered by IBM Granite · IBM Cloud</p>
+        </div>
+      </div>
+      <div class="header-badges">
+        <span class="badge badge-ibm">IBM Granite</span>
+        <span class="badge badge-who">WHO · CDC · NIH</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Disclaimer Banner -->
+  <div class="disclaimer-banner">
+    <span class="disclaimer-icon">⚠️</span>
+    <span>
+      <strong>Medical Disclaimer:</strong> This tool provides educational information only and
+      does <strong>not</strong> constitute medical advice or diagnosis. Always consult a qualified
+      healthcare professional. For emergencies, call <strong>911 / 112 / 108</strong>.
+    </span>
+  </div>
+
+  <!-- Main Layout -->
+  <main class="main-layout">
+
+    <!-- Sidebar: Quick Symptoms -->
+    <aside class="sidebar">
+      <h3 class="sidebar-title">Quick Symptom Checks</h3>
+      <div class="quick-symptom-list" id="quickSymptoms">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">🌍 Multi-language Support</h3>
+        <p class="sidebar-hint">Type your symptoms in your preferred language. The AI will understand and respond accordingly.</p>
+        <div class="lang-tags">
+          <span class="lang-tag">English</span>
+          <span class="lang-tag">हिन्दी</span>
+          <span class="lang-tag">Español</span>
+          <span class="lang-tag">Français</span>
+          <span class="lang-tag">中文</span>
+          <span class="lang-tag">عربي</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">📋 Urgency Guide</h3>
+        <div class="urgency-guide">
+          <div class="urgency-item urgency-low">🟢 Low — Monitor at home</div>
+          <div class="urgency-item urgency-moderate">🟡 Moderate — See doctor within 48h</div>
+          <div class="urgency-item urgency-high">🔴 High — Seek prompt care</div>
+          <div class="urgency-item urgency-emergency">🚨 Emergency — Call services now</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <button class="btn-clear" id="clearChat">🗑️ Clear Conversation</button>
+      </div>
+    </aside>
+
+    <!-- Chat Area -->
+    <section class="chat-section">
+      <div class="chat-window" id="chatWindow">
+        <!-- Welcome message injected by JS -->
+      </div>
+
+      <!-- Urgency Alert Bar (shown dynamically) -->
+      <div class="urgency-alert hidden" id="urgencyAlert"></div>
+
+      <!-- Input Area -->
+      <div class="chat-input-area">
+        <div class="input-wrapper">
+          <textarea
+            id="userInput"
+            class="chat-input"
+            placeholder="Describe your symptoms… e.g. 'I have a sore throat, fever, and headache'"
+            rows="2"
+            maxlength="2000"
+          ></textarea>
+          <div class="input-actions">
+            <span class="char-count" id="charCount">0 / 2000</span>
+            <button class="btn-send" id="sendBtn" title="Send (Enter)">
+              <span class="send-icon">➤</span> Analyze Symptoms
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay hidden" id="loadingOverlay">
+    <div class="spinner-box">
+      <div class="spinner"></div>
+      <p>IBM Granite is analyzing your symptoms…</p>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
