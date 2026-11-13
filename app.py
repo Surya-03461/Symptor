@@ -13,7 +13,13 @@ from guardrails import run_input_guardrails
 # Load environment variables from .env
 load_dotenv()
 
-app = Flask(__name__)
+# Use absolute paths so Flask finds templates/static on Vercel's filesystem
+_BASE = os.path.dirname(os.path.abspath(__file__))
+app = Flask(
+    __name__,
+    template_folder=os.path.join(_BASE, "templates"),
+    static_folder=os.path.join(_BASE, "static"),
+)
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "symptoms-checker-secret-2024")
 
 # Initialize the IBM Granite-powered agent (singleton)

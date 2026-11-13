@@ -1,0 +1,21 @@
+﻿# Exclude large binary files from Vercel deployment
+*.pptx
+*.pdf
+*.png
+*.jpg
+*.jpeg
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Development files
+.env
+.env.example
+ProblemStatement28.html
+
+# Git
+.git/
+.gitignore
