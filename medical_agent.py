@@ -105,7 +105,7 @@ class HealthSymptomAgent:
         url = os.getenv("IBM_WATSONX_URL", "https://us-south.ml.cloud.ibm.com")
 
         if not api_key or not project_id:
-            print("⚠️  IBM credentials not set. Running in fallback (database-only) mode.")
+            print("IBM credentials not set. Running in fallback (database-only) mode.")
             self.model = None
             return
 
@@ -114,7 +114,7 @@ class HealthSymptomAgent:
             client = APIClient(credentials)
 
             self.model = ModelInference(
-                model_id=os.getenv("IBM_MODEL_ID", "ibm/granite-13b-instruct-v2"),
+                model_id=os.getenv("IBM_MODEL_ID", "ibm/granite-3-1-8b-base"),
                 api_client=client,
                 project_id=project_id,
                 params={
@@ -126,9 +126,9 @@ class HealthSymptomAgent:
                     GenParams.STOP_SEQUENCES: ["Human:", "User:"],
                 },
             )
-            print("✅ IBM Granite model initialized successfully.")
+            print("IBM Granite model initialized successfully.")
         except Exception as e:
-            print(f"⚠️  IBM Granite initialization failed: {e}")
+            print(f"IBM Granite initialization failed: {e}")
             self.model = None
 
     def _build_granite_prompt(
