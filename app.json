@@ -1,0 +1,79 @@
+﻿{
+  "name": "Agentic AI Health Symptom Checker",
+  "description": "An Agentic AI-driven health assistant powered by IBM Granite via IBM watsonx.ai. Analyzes symptoms in natural language, provides urgency levels, home care tips, and doctor referral guidance sourced from WHO, CDC and NIH. Problem Statement #28 - IBM University Engagement Program.",
+  "keywords": [
+    "ibm-granite",
+    "watsonx-ai",
+    "ibm-cloud",
+    "health",
+    "symptom-checker",
+    "agentic-ai",
+    "react-agent",
+    "flask",
+    "guardrails",
+    "nlp",
+    "healthcare"
+  ],
+  "website": "https://github.com/Surya-03461/Symptor",
+  "repository": "https://github.com/Surya-03461/Symptor",
+  "logo": "https://www.ibm.com/brand/experience-guides/developer/b1db1ae501d522a1a4b49613fe07c9f1/01_8-bar-positive.svg",
+  "success_url": "/",
+  "scripts": {
+    "postdeploy": "echo Deployment complete"
+  },
+  "env": {
+    "IBM_API_KEY": {
+      "description": "Your IBM Cloud API Key. Get it from: IBM Cloud -> Manage -> IAM -> API Keys -> Create",
+      "required": true
+    },
+    "IBM_PROJECT_ID": {
+      "description": "Your IBM watsonx.ai Project ID. Get it from: watsonx.ai -> Project -> Manage -> General",
+      "required": true
+    },
+    "IBM_WATSONX_URL": {
+      "description": "IBM watsonx.ai endpoint URL for your region.",
+      "value": "https://us-south.ml.cloud.ibm.com",
+      "required": true
+    },
+    "IBM_MODEL_ID": {
+      "description": "IBM Granite model ID to use for inference.",
+      "value": "ibm/granite-13b-instruct-v2",
+      "required": false
+    },
+    "FLASK_SECRET_KEY": {
+      "description": "Secret key for Flask session encryption. Use a long random string in production.",
+      "generator": "secret",
+      "required": true
+    },
+    "PORT": {
+      "description": "Port the Flask app will listen on.",
+      "value": "5000",
+      "required": false
+    },
+    "FLASK_DEBUG": {
+      "description": "Enable Flask debug mode. Set to false in production.",
+      "value": "false",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "stack": "heroku-22",
+  "addons": [],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "python -m pytest tests/ -v"
+      }
+    }
+  }
+}
