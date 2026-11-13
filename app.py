@@ -115,7 +115,7 @@ def health_check():
         "status": "ok",
         "service": "AI Health Symptom Checker",
         "model": os.getenv("IBM_MODEL_ID", "ibm/granite-3-1-8b-base"),
-        "ibm_granite_active": agent.model is not None,
+        "ibm_granite_active": agent._ready,
     })
 
 
@@ -140,6 +140,6 @@ if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
     debug = os.getenv("FLASK_DEBUG", "false").lower() == "true"
     print(f"\nAI Health Symptom Checker starting on http://localhost:{port}")
-    print(f"   IBM Granite Active: {agent.model is not None}")
+    print(f"   IBM Granite Active: {agent._ready}")
     print(f"   Debug Mode: {debug}\n")
     app.run(host="0.0.0.0", port=port, debug=debug)
